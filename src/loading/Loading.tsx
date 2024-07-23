@@ -21,9 +21,6 @@ const Loading: React.FC<LoadingProps> = ({ colorTheme }) => {
           />
         </svg>
       </div>
-      {/* <div
-        className={`loading spinner-border text-${theme || "success"}`}
-      ></div> */}
     </div>
   );
 };

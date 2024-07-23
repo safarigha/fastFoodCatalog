@@ -1,19 +1,25 @@
 import { useEffect, useState } from "react";
-import axios from "../axios";
 import type { CategoryList } from "../interfaces";
 import Loading from "../loading/Loading";
+import { fetchCategories } from "../Services/categoryService";
 
 const CategoryList = () => {
   const [loading, setLoading] = useState(true);
   const [categories, setCategories] = useState<CategoryList[]>([]);
+
   useEffect(() => {
-    const fetchCategories = async () => {
-      const response = await axios.get("/FoodCategory/categories");
-      setCategories(response.data);
-      setLoading(false);
+    const getCategories = async () => {
+      try {
+        const data = await fetchCategories();
+        setCategories(data);
+      } catch (error) {
+        console.error("Error fetching categories:", error);
+      } finally {
+        setLoading(false);
+      }
     };
 
-    fetchCategories();
+    getCategories();
   }, []);
 
   const renderContent = () => {
