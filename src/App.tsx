@@ -1,10 +1,12 @@
 import "./App.css";
+import Header from "./header/Header";
+import "./index.css";
 
 function App() {
   return (
-    <>
-      <h1>فست فود کاتالوگ</h1>
-    </>
+    <div className="min-h-screen">
+      <Header></Header>
+    </div>
   );
 }
 
