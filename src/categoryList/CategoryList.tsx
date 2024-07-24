@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
-import type { CategoryList } from "../interfaces";
+import type { CategoryList, CategoryListProps } from "../interfaces";
 import Loading from "../loading/Loading";
 import { fetchCategories } from "../Services/categoryService";
 
-const CategoryList = () => {
+const CategoryList: React.FC<CategoryListProps> = ({
+  filterItems,
+  children,
+}) => {
   const [loading, setLoading] = useState(true);
   const [categories, setCategories] = useState<CategoryList[]>([]);
 
@@ -25,23 +28,30 @@ const CategoryList = () => {
   const renderContent = () => {
     if (loading) return <Loading colorTheme="#FF0000" />;
     return (
-      <ul className="flex">
-        <li className="ml-6 text-base	text-right text-gray-500 hover:text-red-500">
-          <a className="nav-link" href="#">
-            همه فست فودها
-          </a>
-        </li>
-        {categories.map((category) => (
+      <div className="flex items-center justify-center">
+        <ul className="flex">
           <li
-            className="ml-6 text-base	text-right text-gray-500 hover:text-red-500"
-            key={category.id}
+            className="ml-8 text-base	text-right text-gray-500 hover:text-red-500"
+            onClick={() => filterItems(null)}
           >
             <a className="nav-link" href="#">
-              {category.name}
+              همه فست فودها
             </a>
           </li>
-        ))}
-      </ul>
+          {categories.map((category) => (
+            <li
+              className="ml-8 text-base	text-right text-gray-500 hover:text-red-500"
+              onClick={() => filterItems(category.id.toString())}
+              key={category.id}
+            >
+              <a className="nav-link" href="#">
+                {category.name}
+              </a>
+            </li>
+          ))}
+        </ul>
+        {children}
+      </div>
     );
   };
 

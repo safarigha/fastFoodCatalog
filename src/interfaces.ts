@@ -18,3 +18,13 @@ export interface FastFoodItem {
 export interface FastFoodListProps {
   fastFoodItems: FastFoodItem[];
 }
+
+export interface CategoryListProps {
+  filterItems: (categoryId: string | null) => void;
+  children: React.ReactNode;
+}
+
+export interface SearchBarProps {
+  className?: string;
+  searchItems: (term: string | null) => void;
+}
