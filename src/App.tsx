@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
-import "./App.css";
-import CategoryList from "./categoryList/CategoryList";
-import Header from "./header/Header";
-import "./index.css";
-import Loading from "./loading/Loading";
-import FastFoodList from "./fastFoodList/FastFoodList";
-import { fetchFastFoodItems } from "./Services/fastFoodListService";
 import { FastFoodItem } from "./interfaces";
-import axios from "./axios";
+import "./App.css";
+import "./index.css";
+import Header from "./header/Header";
+import Loading from "./loading/Loading";
+import CategoryList from "./categoryList/CategoryList";
+import FastFoodList from "./fastFoodList/FastFoodList";
 import SearchBar from "./searchBar/SearchBar";
 import notFound from "./assets/images/404.png";
+import fetchFastFoodItems from "./Services/fetchFastFoodItems";
+import fetchFastFoodSearch from "./Services/fetchFastFoodSearch";
 
 function App() {
   const [loading, setLoading] = useState(false);
@@ -32,11 +32,9 @@ function App() {
 
   const searchTerms = async (term: string | null) => {
     setLoading(true);
-    const response = await axios.get(
-      `/FastFood/search/${term ? "?term=" + term : ""}`
-    );
+    const data = await fetchFastFoodSearch(term);
     setLoading(false);
-    setFastFoodItems(response.data);
+    setFastFoodItems(data);
   };
 
   const renderContent = () => {

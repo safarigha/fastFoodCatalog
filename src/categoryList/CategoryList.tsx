@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import type { CategoryList, CategoryListProps } from "../interfaces";
 import Loading from "../loading/Loading";
-import { fetchCategories } from "../Services/categoryService";
+import fetchCategories from "../Services/fetchCategories";
 
 const CategoryList: React.FC<CategoryListProps> = ({
   filterItems,

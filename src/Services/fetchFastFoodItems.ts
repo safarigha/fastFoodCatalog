@@ -1,7 +1,7 @@
 import axios from "../axios";
 import { FastFoodItem } from "../interfaces";
 
-export const fetchFastFoodItems = async (
+const fetchFastFoodItems = async (
   categoryId?: string
 ): Promise<FastFoodItem[]> => {
   const response = await axios.get(
@@ -9,3 +9,5 @@ export const fetchFastFoodItems = async (
   );
   return response.data;
 };
+
+export default fetchFastFoodItems;
