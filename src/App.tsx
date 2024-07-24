@@ -3,21 +3,20 @@ import "./App.css";
 import CategoryList from "./categoryList/CategoryList";
 import Header from "./header/Header";
 import "./index.css";
-import axios from "./axios";
 import Loading from "./loading/Loading";
 import FastFoodList from "./fastFoodList/FastFoodList";
+import { fetchFastFoodItems } from "./Services/fastFoodListService";
+import { FastFoodItem } from "./interfaces";
 
 function App() {
   const [loading, setLoading] = useState(false);
-  const [fastFoodItems, setFastFoodItems] = useState([]);
+  const [fastFoodItems, setFastFoodItems] = useState<FastFoodItem[]>([]);
 
   const fetchData = async (categoryId = null) => {
     setLoading(true);
-    const response = await axios.get(
-      `/FastFood/list/${categoryId ? "?categoryId=" + categoryId : ""}`
-    );
+    const data = await fetchFastFoodItems(categoryId);
     setLoading(false);
-    setFastFoodItems(response.data);
+    setFastFoodItems(data);
   };
 
   useEffect(() => {
