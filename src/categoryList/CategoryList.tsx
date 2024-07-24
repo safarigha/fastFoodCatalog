@@ -46,7 +46,7 @@ const CategoryList = () => {
   };
 
   return (
-    <nav className="container -mt-[42px]">
+    <nav className="sm:container sm:mx-auto px-[200px] -mt-[42px]">
       <div className="flex items-center justify-center bg-white rounded-[5px] shadow-lg py-1 h-[80px]">
         {renderContent()}
       </div>
