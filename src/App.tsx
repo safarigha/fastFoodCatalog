@@ -39,20 +39,6 @@ function App() {
     setFastFoodItems(response.data);
   };
 
-  // const renderContent = () => {
-  //   if (loading) return <Loading />;
-  //   return <FastFoodList fastFoodItems={fastFoodItems} />;
-  // };
-
-  // if (fastFoodItems.length === 0) {
-  //   return (
-  //     <>
-  //       <div>برای کلید واژه فوق هیچ آیتمی یافت نشد</div>
-  //       <img src={notFound} alt="not found" />
-  //     </>
-  //   );
-  // }
-
   const renderContent = () => {
     if (loading) return <Loading />;
     return fastFoodItems.length === 0 ? (
