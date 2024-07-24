@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .bg-header-background {
+    background-image: url("./assets/images/header-background.jpg");
+  }
+}
+
+@font-face {
+  font-family: "IranYekan";
+  src: url("../src/assets/fonts/iranyekanwebregular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
